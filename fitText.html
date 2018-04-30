@@ -1,91 +1,25 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="jquery.textfill.js"></script>
+<script src="fitText.js"></script>
+<link rel="stylesheet" type="text/css" href="fitText.css">
 
 <html>
     <head>
         <title>Fit the text to the div!</title>
     </head>
-
     <body>
-        <div class="fit-text-container">
+        <div class="fitTextContainer">
+            <h1>A Responsive Text Container</h1>
             <div>
-                <textarea class="textInput" onkeyup="textChange()"></textarea>
-                <input type="range" class="sliderInput" oninput="sliderChange()">
+                <h3>Enter text</h3>
+                <textarea class="textInput" onkeyup="textOnChange()"></textarea>
+                <h3>Select width</h3>
+                <input type="range" class="sliderInput" oninput="sliderOnChange()">
             </div>
 
+            <h3>Et Voila!</h3>
             <div class="outputDiv"><span class="outputText"></span></div>
+            <span class="errorMessage">Oh no... the minimum font size is 1px</span>
         </div>
     </body>
-
 </html>
-
-<script>
-    var fontHeight = 24;
-    var textValue = "";
-    var sliderValue = 50;
-
-    function fitText() {
-        $('.outputDiv').textfill();
-    }
-
-    function textChange(e) {
-        console.log(e);
-        textValue = $('.textInput').val()
-        sessionStorage.textValue = textValue;
-        updateOutputText();
-        fitText();
-    }
-
-    function sliderChange() {
-        sliderValue = $('.sliderInput').val()
-        sessionStorage.sliderValue = sliderValue;
-        updateOutputWidth();
-        fitText();
-    }
-
-    function updateOutputText() {
-        $('.outputDiv > .outputText').text(textValue);
-    }
-
-    function updateOutputWidth() {
-        var width = $(".sliderInput").val() + "%";
-        $('.outputDiv').css({
-            'width': width
-        });
-    }
-
-    $(document).ready(function () {
-        sliderValue = sessionStorage.sliderValue;
-        $('.sliderInput').val(sliderValue)
-        updateOutputWidth()
-
-        textValue = sessionStorage.textValue;
-        $('.textInput').val(textValue)
-        updateOutputText()
-
-        fitText();
-    });
-</script>
-
-<style type="text/css">
-    .fit-text-container {
-        width: 80%;
-        height: 100%;
-        padding: 30px;
-    }
-
-    .textInput {
-        width: 100%;
-    }
-
-    .sliderInput {
-        width: 100%;
-    }
-
-    .outputDiv {
-        border: 1px solid black;
-        white-space: nowrap;
-        height: 50px;
-        width: 50%;
-    }
-</style>

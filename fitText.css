@@ -1,0 +1,24 @@
+.fitTextContainer {
+    width: 80%;
+    height: 100%;
+    padding: 30px;
+}
+
+.textInput {
+    width: 100%;
+}
+
+.sliderInput {
+    width: 100%;
+}
+
+.outputDiv {
+    border: 1px solid black;
+    white-space: nowrap;
+    height: 50px;
+    width: 50%;
+}
+
+.errorMessage {
+    color: darkred;
+}
